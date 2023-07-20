@@ -1,3 +1,9 @@
+<?php 
+include_once 'db.php' ;
+ob_start();
+session_start();
+?>
+
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" href="home_page.php">Home</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"

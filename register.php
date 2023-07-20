@@ -22,7 +22,7 @@
     <div class="container mt-5">
         <div class="row justify-content-center">
             <div class="col-md-4">
-                <form>
+                <form action="transactions.php" method="POST">
                     <div class="form-group">
                         <label for="f_name">First name</label>
                         <input type="text" class="form-control" id="f_name" name="f_name" required>

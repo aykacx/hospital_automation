@@ -20,14 +20,14 @@
     <div class="container mt-5">
         <div class="row justify-content-center">
             <div class="col-md-4">
-                <form>
+                <form action="transactions.php" method="POST">
                     <div class="form-group">
-                        <label for="id_number">Identity Number</label>
-                        <input type="text" class="form-control" id="id_number" name="id_number" pattern="\d{11}" required>
+                        <label for="id_num">Identity Number</label>
+                        <input type="text" class="form-control" id="id_num" name="id_num" pattern="\d{11}" required>
                     </div>
                     <div class="form-group">
-                        <label for="password">Password</label>
-                        <input type="password" class="form-control" id="password" name="password" pattern=".{8,}" required>
+                        <label for="pass">Password</label>
+                        <input type="password" class="form-control" id="pass" name="pass" pattern=".{8,}" required>
                     </div>
                     <button type="submit" class="btn btn-success" name="login">Login</button>
                 </form>

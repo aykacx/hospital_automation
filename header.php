@@ -1,3 +1,9 @@
+<?php 
+include_once 'db.php' ;
+ob_start();
+session_start();
+?>
+
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <a class="navbar-brand" href="/hospital_automation">HOSPITAL AUTOMATION</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
