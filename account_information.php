@@ -10,11 +10,13 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
-    <title>HOSPITAL AUTOMATION</title>
+    <title>Account</title>
+
+    <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
-    <?php include_once 'header.php'; ?>
+    <?php include_once 'home_header.php'; ?>
 
 
     <div class="container mt-5">
@@ -22,14 +24,24 @@
             <div class="col-md-4">
                 <form>
                     <div class="form-group">
+                        <label for="f_name">First name</label>
+                        <input type="text" class="form-control" id="f_name" name="f_name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="l_name">Last name</label>
+                        <input type="text" class="form-control" id="l_name" name="l_name" required>
+                    </div>
+                    <div class="form-group">
                         <label for="id_number">Identity Number</label>
-                        <input type="text" class="form-control" id="id_number" name="id_number" pattern="\d{11}" required>
+                        <input type="text" class="form-control" id="id_number" name="id_number" pattern="\d{11}"
+                            required>
                     </div>
                     <div class="form-group">
                         <label for="password">Password</label>
-                        <input type="password" class="form-control" id="password" name="password" pattern=".{8,}" required>
+                        <input type="password" class="form-control" id="password" name="password" pattern=".{8,}"
+                            required>
                     </div>
-                    <button type="submit" class="btn btn-success" name="login">Login</button>
+                    <button type="submit" class="btn btn-primary" name="signup">Sign up</button>
                 </form>
             </div>
         </div>

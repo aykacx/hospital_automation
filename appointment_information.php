@@ -10,32 +10,32 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
-    <title>HOSPITAL AUTOMATION</title>
+    <title>Appointment</title>
 </head>
 
 <body>
-    <?php include_once 'header.php'; ?>
-
-
-    <div class="container mt-5">
-        <div class="row justify-content-center">
-            <div class="col-md-4">
-                <form>
-                    <div class="form-group">
-                        <label for="id_number">Identity Number</label>
-                        <input type="text" class="form-control" id="id_number" name="id_number" pattern="\d{11}" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="password">Password</label>
-                        <input type="password" class="form-control" id="password" name="password" pattern=".{8,}" required>
-                    </div>
-                    <button type="submit" class="btn btn-success" name="login">Login</button>
-                </form>
-            </div>
-        </div>
+    <?php include_once 'home_header.php'; ?>
+    <div class="container text-center">
+        <h4 class="mt-3">Appointments</h4>
+        <table class="table table-bordered mt-2 ml-5 bg-light text-center col-md-10">
+            <thead>
+                <tr>
+                    <th scope="col">xxx</th>
+                    <th scope="col">xxx</th>
+                    <th scope="col">xxx</th>
+                    <th scope="col">xxx</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Mark</td>
+                    <td>Mark</td>
+                    <td>mark</td>
+                    <td>mark</td>
+                </tr>
+            </tbody>
+        </table>
     </div>
-
-
 
 
 
