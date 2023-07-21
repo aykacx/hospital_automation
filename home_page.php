@@ -16,13 +16,15 @@
 <body>
     <?php include_once 'home_header.php'; ?>
 
-    <div class="fnln ml-3">
-        <p>Dear F.Name L.Name</p>
+    <div class="fnln ml-5 mt-3">
+        <b>Welcome
+            <?php echo $user_f_name . " " . $user_l_name; ?>
+        </b>
     </div>
     <div class="container mt-5 mb-5">
         <div class="row">
-            <div class="col-md-5 bg-light min-vh-100 ml-5 mb-5 mr-2 p-4 border rounded">
-                <form action="" method="POST">
+            <div class="col-md-5 bg-light min-vh-100 ml-5 mb-5 mr-2 p-6 border rounded">
+                <form action="transactions.php" method="POST">
                     <div class="form-group">
                         <label for="date">Choose a date:</label>
                         <input type="date" class="form-control" name="date">
@@ -58,15 +60,17 @@
                         <label for="doctor">Choose a doctor:</label>
                         <select class="form-control doctor" name="doctor">
                             <option value="doctor" disabled selected>Choose doctor</option>
-                            <option value="Liberty City Hospital">Prof. Dr. Carl Johnson</option>
-                            <option value="San Andreas Hospital">Dr. Micheal De Santa</option>
-                            <option value="Vice City Hospital">Dr. Tommy Vercetty</option>
-                            <option value="Los Santos Hospital">Dr. Franklin Clinton</option>
-                            <option value="Los Santos Hospital">Dr. Trevor Philips</option>
+                            <option value="Prof. Dr. Carl Johnson">Prof. Dr. Carl Johnson</option>
+                            <option value="Dr. Micheal De Santa">Dr. Micheal De Santa</option>
+                            <option value="Dr. Tommy Vercetty">Dr. Tommy Vercetty</option>
+                            <option value="Dr. Franklin Clinton">Dr. Franklin Clinton</option>
+                            <option value="Dr. Trevor Philips">Dr. Trevor Philips</option>
                         </select>
                     </div>
 
-                    <button name="submit" type="submit" class="btn btn-primary">Save the appointment</button>
+                    <input hidden value="<?php echo $user_id; ?>" name="user_id">
+
+                    <button name="apply_appo" type="submit" class="btn btn-primary">Save the appointment</button>
                 </form>
             </div>
             <div class="col-md-5 bg-light min-vh-100 ml-4 mb-5 p-6 border rounded">

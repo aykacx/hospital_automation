@@ -20,20 +20,43 @@
         <table class="table table-bordered mt-2 ml-5 bg-light text-center col-md-10">
             <thead>
                 <tr>
-                    <th scope="col">xxx</th>
-                    <th scope="col">xxx</th>
-                    <th scope="col">xxx</th>
-                    <th scope="col">xxx</th>
+                    <th scope="col">City</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Hospital</th>
+                    <th scope="col">Clinic</th>
+                    <th scope="col">Doctor</th>
                 </tr>
             </thead>
-            <tbody>
-                <tr>
-                    <td>Mark</td>
-                    <td>Mark</td>
-                    <td>mark</td>
-                    <td>mark</td>
-                </tr>
-            </tbody>
+            <?php
+            $user_id_num = $_SESSION['identity_number'];
+
+            $sql = 'SELECT * FROM appointments INNER JOIN users ON appointments.user_id = users.id WHERE identity_number = :user_identity';
+
+            $pullAppo = $conn->prepare($sql);
+            $pullAppo->execute(['user_identity' => $user_id_num]);
+            
+
+            while ($fetchAppo = $pullAppo->fetch(PDO::FETCH_ASSOC)) { ?>
+                <tbody>
+                    <tr>
+                        <td>
+                            <?php echo $fetchAppo['city']; ?>
+                        </td>
+                        <td>
+                            <?php echo $fetchAppo['date']; ?>
+                        </td>
+                        <td>
+                            <?php echo $fetchAppo['hospital']; ?>
+                        </td>
+                        <td>
+                            <?php echo $fetchAppo['clinic']; ?>
+                        </td>
+                        <td>
+                            <?php echo $fetchAppo['doctor']; ?>
+                        </td>
+                    </tr>
+                </tbody>
+            <?php } ?>
         </table>
     </div>
 

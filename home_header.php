@@ -1,8 +1,28 @@
-<?php 
-include_once 'db.php' ;
+<?php
+include_once 'db.php';
 ob_start();
 session_start();
+
+$sql = 'SELECT * FROM users WHERE identity_number=:user_identity';
+
+$stmt = $conn->prepare($sql);
+$stmt->execute(['user_identity' => $_SESSION['identity_number']]);
+$stmtRowCount = $stmt->rowCount();
+
+if ($stmtRowCount == 0) {
+    header('location:index.php');
+    exit(); 
+}
+
+$fetchUser = $stmt->fetch(PDO::FETCH_ASSOC);
+
+$user_id = $fetchUser['id'];
+$user_f_name = $fetchUser['first_name'];
+$user_l_name = $fetchUser['last_name'];
+$user_id_num = $fetchUser['identity_number'];
+$user_password = $fetchUser['password'];
 ?>
+
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" href="home_page.php">Home</a>
@@ -20,8 +40,8 @@ session_start();
                 <a class="nav-link" href="appointment_information.php">Appointment Information</a>
             </li>
         </ul>
-        <form class="form-inline my-2 my-lg-0">
-            <button class="btn btn-outline-danger my-2 my-sm-0" type="submit">Log out</button>
+        <form action="transactions.php" method="POST" class="form-inline my-2 my-lg-0">
+            <button class="btn btn-outline-danger my-2 my-sm-0" name="logout" type="submit">Log out</button>
         </form>
     </div>
 </nav>

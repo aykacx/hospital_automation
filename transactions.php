@@ -1,4 +1,5 @@
 <?php include_once 'db.php';
+session_start();
 
 
 
@@ -24,27 +25,54 @@ if (isset($_POST['signup'])) {
 
 
 if (isset($_POST['login'])) {
-    $id_num = isset($_POST['id_num'])?$_POST['id_num']:null;
-    $pass = isset($_POST['pass'])?$_POST['pass']:null;
+    $id_num = isset($_POST['id_num']) ? $_POST['id_num'] : null;
+    $pass = isset($_POST['pass']) ? $_POST['pass'] : null;
 
     $sql = "SELECT * FROM users WHERE identity_number=:id_num AND password=:pass";
 
     $stmt = $conn->prepare($sql);
     $stmt->execute([
-        ':id_num'=>$id_num, ':pass'=>$pass
+        ':id_num' => $id_num,
+        ':pass' => $pass
     ]);
 
     $rowCount = $stmt->rowCount();
 
     if ($rowCount == 1) {
-        $_SESSION['userIdentity'] = $id_num;
+        $_SESSION['identity_number'] = $id_num;
         header('location:home_page.php?success');
-    }else {
+    } else {
         header('location:index.php');
         exit;
     }
 }
 
+if (isset($_POST['apply_appo'])) {
+    $date = $_POST['date'];
+    $city = $_POST['city'];
+    $hospital = $_POST['hospital'];
+    $clinic = $_POST['clinic'];
+    $doctor = $_POST['doctor'];
+    $user_id = $_POST['user_id'];
+
+    $sql = 'INSERT INTO appointments (date, city, hospital, clinic, doctor, user_id) 
+    VALUES (?, ?, ?, ?, ?, ?)';
+    $pushAppo = $conn->prepare($sql);
+    $pushAppo->execute([
+        $date,$city,$hospital,$clinic,$doctor,$user_id
+    ]);
+
+    if ($pushAppo) {
+        header('location: appointment_information.php');
+    }else {
+        echo 'error: '.$pushAppo->errorInfo().'error code: '.$pushAppo->errorCode();
+    }
+}
+if (isset($_POST['logout'])) {
+    header('location:index.php');
+    session_destroy();
+    $conn = " ";
+}
 
 
 
