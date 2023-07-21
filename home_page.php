@@ -49,10 +49,10 @@
                         <label for="clinic">Choose a clinic:</label>
                         <select class="form-control clinic" name="clinic">
                             <option value="clinic" disabled selected>Choose clinic</option>
-                            <option value="First Aid">First Aid</option>
-                            <option value="I Got Shot! Heeeealp!">I Got Shot! Heeeealp!</option>
-                            <option value="Vehicle Explosive Death Healing">Vehicle Explosive Death Healing</option>
-                            <option value="Death Because Of  Life Bug">Death Because Of Life Bug</option>
+                            <option value="General Surgery Clinic">General Surgery Clinic</option>
+                            <option value="Orthopedics and Traumatology Clinic">Orthopedics and Traumatology Clinic</option>
+                            <option value="Cardiology Clinic">Cardiology Clinic</option>
+                            <option value="Pediatrics Clinic">Pediatrics Clinic</option>
                         </select>
                     </div>
 
