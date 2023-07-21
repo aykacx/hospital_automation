@@ -59,15 +59,49 @@ if (isset($_POST['apply_appo'])) {
     VALUES (?, ?, ?, ?, ?, ?)';
     $pushAppo = $conn->prepare($sql);
     $pushAppo->execute([
-        $date,$city,$hospital,$clinic,$doctor,$user_id
+        $date,
+        $city,
+        $hospital,
+        $clinic,
+        $doctor,
+        $user_id
     ]);
 
     if ($pushAppo) {
         header('location: appointment_information.php');
-    }else {
-        echo 'error: '.$pushAppo->errorInfo().'error code: '.$pushAppo->errorCode();
+    } else {
+        echo 'error: ' . $pushAppo->errorInfo() . 'error code: ' . $pushAppo->errorCode();
     }
 }
+
+if (isset($_POST['update'])) {
+    $newFName = $_POST['f_name'];
+    $newLName = $_POST['l_name'];
+    $newIdNumber = $_POST['id_number'];
+    $newPass = $_POST['password'];
+
+    $user_id_num = $_SESSION['identity_number'];
+
+
+    $sql = 'UPDATE users SET first_name=?, last_name=?, identity_number=?, password=? WHERE identity_number = ?';
+
+    $stmt = $conn->prepare($sql);
+    $stmt->execute([
+        $newFName,
+        $newLName,
+        $newIdNumber,
+        $newPass,
+        $newIdNumber
+    ]);
+
+    if ($stmt) {
+        header('location:account_information.php');
+    } else {
+        header('location:account_information.php');
+    }
+}
+
+
 if (isset($_POST['logout'])) {
     header('location:index.php');
     session_destroy();
