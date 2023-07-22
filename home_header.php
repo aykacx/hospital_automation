@@ -6,12 +6,19 @@ session_start();
 $sql = 'SELECT * FROM users WHERE identity_number=:user_identity';
 
 $stmt = $conn->prepare($sql);
-$stmt->execute(['user_identity' => $_SESSION['identity_number']]);
+
+
+$stmt->execute([
+    'user_identity' => $_SESSION['identity_number'
+    ]
+]);
+
+
 $stmtRowCount = $stmt->rowCount();
 
 if ($stmtRowCount == 0) {
     header('location:index.php');
-    exit(); 
+    exit();
 }
 
 $fetchUser = $stmt->fetch(PDO::FETCH_ASSOC);

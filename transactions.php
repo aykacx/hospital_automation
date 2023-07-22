@@ -1,3 +1,9 @@
+<head>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+
 <?php include_once 'db.php';
 session_start();
 
@@ -73,6 +79,64 @@ if (isset($_POST['apply_appo'])) {
         echo 'error: ' . $pushAppo->errorInfo() . 'error code: ' . $pushAppo->errorCode();
     }
 }
+?>
+
+<body>
+    <script>
+        $(document).ready(function () {
+            // cities selecti değiştiğinde çalışacak fonksiyon
+            $('.city').change(function () {
+                var selectedCity = $(this).val();
+                var hospitalSelect = $('.hospital');
+
+                // AJAX isteği göndererek hastaneleri getir
+                $.ajax({
+                    url: 'get_hospitals.php',
+                    method: 'POST',
+                    data: { city: selectedCity },
+                    dataType: 'json',
+                    success: function (response) {
+                        hospitalSelect.empty();
+                        hospitalSelect.append('<option value="" disabled selected>Choose hospital</option>');
+                        $.each(response, function (index, hospital) {
+                            hospitalSelect.append('<option value="' + hospital.hospital_id + '">' + hospital.hospital_name + '</option>');
+                        });
+                    },
+                    error: function (xhr, status, error) {
+                        console.log(error);
+                    }
+                });
+            });
+
+            // hospitals selecti değiştiğinde çalışacak fonksiyon
+            $('.hospital').change(function () {
+                var selectedHospital = $(this).val();
+                var clinicSelect = $('.clinic');
+
+                // AJAX isteği göndererek klinikleri getir
+                $.ajax({
+                    url: 'get_clinics.php',
+                    method: 'POST',
+                    data: { hospital: selectedHospital },
+                    dataType: 'json',
+                    success: function (response) {
+                        clinicSelect.empty();
+                        clinicSelect.append('<option value="" disabled selected>Choose clinic</option>');
+                        $.each(response, function (index, clinic) {
+                            clinicSelect.append('<option value="' + clinic.clinic_id + '">' + clinic.clinic_name + '</option>');
+                        });
+                    },
+                    error: function (xhr, status, error) {
+                        console.log(error);
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+
+
+<?php
 
 if (isset($_POST['update'])) {
     $newFName = $_POST['f_name'];
@@ -91,7 +155,7 @@ if (isset($_POST['update'])) {
         $newLName,
         $newIdNumber,
         $newPass,
-        $newIdNumber
+        $$user_id_num
     ]);
 
     if ($stmt) {
